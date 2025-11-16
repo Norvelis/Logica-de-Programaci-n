@@ -31,27 +31,33 @@ class Biblioteca{
  }
 
  //hacer función de mostrar libro
+
+mostrarLibros(){
+    
+    console.log(`Los libros en la biblioteca ${this.nombre} son:`)
+    console.log(this.libros)
+    return this.libros 
+    
+}
+
  buscarLibro(id: number) {
 
       const libroBuscado = this.libros.find(libro=>libro.id === id )
     if (libroBuscado){
-            console.log(`El libro encontrado es: ${libroBuscado}`)
+            console.log(`El libro encontrado es: ${libroBuscado.nombre} por ${libroBuscado.autor}`)
     }else{
         console.log("El libro no se encuentra")
     }
     
     return libroBuscado
-
  }
 
 }
 
 const ateneo = new Biblioteca("Ateneo Libros")
-//ateneo.agregarLibro(100, "La alfombra magica", "Sushi Yamamoto", 50000, )
-
+ateneo.agregarLibro(100, "La alfombra magica", "Sushi Yamamoto", 50000, )
+ateneo.mostrarLibros()
 ateneo.buscarLibro(100)
 
-//hacer otro metodo: buscarLibro, 
-//Mejorar metodo agregarLibro.
 
 
