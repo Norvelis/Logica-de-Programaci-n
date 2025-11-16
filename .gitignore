@@ -1,0 +1,31 @@
+# Dependencias
+node_modules/
+
+# Salidas de build
+dist/
+build/
+lib/
+
+# Archivos compilados de TypeScript y mapas
+*.js
+*.js.map
+*.d.ts
+
+# Variables de entorno y logs
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# IDE / Sistema
+.vscode/
+.DS_Store
+
+# Cobertura
+coverage/
+
+# Windows/OneDrive temporales
+Thumbs.db
+ehthumbs.dbnode_modules/
