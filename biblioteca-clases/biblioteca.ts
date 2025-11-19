@@ -1,63 +1,58 @@
-class Libro {
-
-  constructor(
-    public id: number,
-    public nombre: string,
-    public autor: string,
-    public precio: number 
-  ) {}
+// interface
+interface ILibro {
+  id: number;
+  nombre: string;
+  autor: string;
+  precio: number;
 }
+class Biblioteca {
+  private nombre: string;
+  private libros: ILibro[];
 
-class Biblioteca{
-  private nombre: string
-  private libros: Libro[]
-
-  constructor(nombre: string){
-    this.nombre = nombre
-    this.libros = []
+  constructor(nombre: string) {
+    this.nombre = nombre;
+    this.libros = [];
   }
 
- agregarLibro(id: number, nombre:string, autor:string, precio:number):void {
-  
-  const nuevoLibro: Libro = {
-      id: id,
-      nombre: nombre,
-      autor: autor,
-      precio: precio
+  agregarLibro(nuevoLibro: ILibro): void {
+    this.libros.push(nuevoLibro);
+    console.log(
+      `El libro que se agrego fue: ${nuevoLibro.nombre} cuesta ${nuevoLibro.precio}`
+    );
+  }
+
+  //hacer función de mostrar libro
+
+  mostrarLibros() {
+    console.log(`Los libros en la biblioteca ${this.nombre} son:`);
+    console.log(this.libros);
+    return this.libros;
+  }
+
+  buscarLibro(id: number): ILibro | undefined {
+    const libroBuscado = this.libros.find((libro) => libro.id === id);
+    if (libroBuscado) {
+      console.log(
+        `El libro encontrado es: ${libroBuscado.nombre} por ${libroBuscado.autor}`
+      );
+    } else {
+      console.log('El libro no se encuentra');
     }
-    this.libros.push(nuevoLibro)
 
-  console.log(`El libro que se agrego fue: ${nuevoLibro.nombre} cuesta ${nuevoLibro.precio}`)
- }
+    return libroBuscado;
+  }
 
- //hacer función de mostrar libro
-
-mostrarLibros(){
-    
-    console.log(`Los libros en la biblioteca ${this.nombre} son:`)
-    console.log(this.libros)
-    return this.libros 
-    
+  // Elimiar Libro de tarea
 }
 
- buscarLibro(id: number) {
+const yenny = new Biblioteca('yenny Libros');
 
-      const libroBuscado = this.libros.find(libro=>libro.id === id )
-    if (libroBuscado){
-            console.log(`El libro encontrado es: ${libroBuscado.nombre} por ${libroBuscado.autor}`)
-    }else{
-        console.log("El libro no se encuentra")
-    }
-    
-    return libroBuscado
- }
+yenny.agregarLibro({
+  id: 100,
+  nombre: 'La alfombra magica',
+  autor: 'Sushi Yamamoto',
+  precio: 5000,
+});
 
-}
-
-const ateneo = new Biblioteca("Ateneo Libros")
-ateneo.agregarLibro(100, "La alfombra magica", "Sushi Yamamoto", 50000, )
-ateneo.mostrarLibros()
-ateneo.buscarLibro(100)
-
-
-
+yenny.mostrarLibros();
+yenny.buscarLibro(100);
