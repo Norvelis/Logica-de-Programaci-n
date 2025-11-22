@@ -21,7 +21,6 @@ class Biblioteca {
     );
   }
 
-  //hacer función de mostrar libro
 
   mostrarLibros() {
     console.log(`Los libros en la biblioteca ${this.nombre} son:`);
@@ -42,7 +41,23 @@ class Biblioteca {
     return libroBuscado;
   }
 
-  // Elimiar Libro de tarea
+  // Eliminar Libro de tarea
+
+eliminarLibro(id: number): boolean {
+  const indice = this.libros.findIndex((libro) => libro.id === id);
+  
+  if (indice !== -1) {
+    const [libroEliminado] = this.libros.splice(indice, 1);
+    console.log(
+      `Libro eliminado: "${libroEliminado.nombre}" por ${libroEliminado.autor}`
+    );
+    return true;
+  }
+  
+  console.log('El libro no se encuentra');
+  return false;
+  }
+
 }
 
 const yenny = new Biblioteca('yenny Libros');
@@ -56,3 +71,5 @@ yenny.agregarLibro({
 
 yenny.mostrarLibros();
 yenny.buscarLibro(100);
+yenny.eliminarLibro(100);
+yenny.mostrarLibros();
